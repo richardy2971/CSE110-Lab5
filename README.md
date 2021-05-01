@@ -1,7 +1,7 @@
 # CSE110 SP21 Lab 5
 
 ## Author(s):
-- YOUR NAME
+- Richard Yang, Yotam Blum
 
 ## Part 1:
 
