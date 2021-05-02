@@ -66,8 +66,10 @@ generate.addEventListener('submit', (event) => {
 });
 
 resest.addEventListener('click', (event) => {
+  //something like don't handle not used
   event.preventDefault();
   canvas_context.clearRect(0, 0, canvas.width, canvas.height);
+  //found and simply disabeled buttons
   document.querySelector("[type='reset']").disabled= true;
   document.querySelector("[type='submit']").disabled= false;
   document.querySelector("[type='button']").disabled= true;
@@ -77,6 +79,7 @@ resest.addEventListener('click', (event) => {
 
 
 button.addEventListener('click', () => {
+  //mostly look at the docs
   var synth = window.speechSynthesis;
   var voices = synth.getVoices();
   var talk = new SpeechSynthesisUtterance(text_top.value+text_bottom.value);
@@ -88,6 +91,7 @@ button.addEventListener('click', () => {
 volume.addEventListener('input', () => {
   const icon = volume.children[0];
   const range = volume.children[1];
+  //html descriptions
   if(range.value >=67){
     icon.src = "icons/volume-level-3.svg";
     icon.alt = "Volume Level 3";
