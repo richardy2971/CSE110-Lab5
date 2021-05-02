@@ -1,21 +1,26 @@
 // script.js
-
 const img = new Image(); // used to load image from <input> and draw to canvas
-var canvas = document.getElementById("user-image");
-var canvas_context = canvas.getContext("2d");
-const canvas_change = document.getElementsById("image-input");
+const canvas = document.getElementById('user-image');
+const canvas_context = canvas.getContext('2d');
+
+
+const canvas_change = document.getElementById('image-input');
+
+
+
 
 // Fires whenever the img object loads a new image (such as with img.src =)
 img.addEventListener('load', () => {
-  // TODO
+    // TODO
 
   // Some helpful tips:
   // - Fill the whole Canvas with black first to add borders on non-square images, then draw on top
   canvas_context.beginPath();
-  canvas_context.clearRect(0,0,canvas.width,canvas.height);
+  canvas_context.clearRect(0, 0, canvas.width, canvas.height);
+ 
 
   var every_button= document.getElementsByTagName("button");
-  for(int i=0;i<every_button.length;i++){
+  for(let i=0;i<every_button.length;i++){
     if(every_button.type!="submit"){
       every_button[i].disabled=true;
     }
@@ -27,22 +32,18 @@ img.addEventListener('load', () => {
   canvas_context.rect(0,0,canvas.width,canvas.height);
   canvas_context.fillStyle = "black";
   canvas_context.fill();
-
-
+  
   var dimmensions = getDimmensions(canvas.width, canvas.height, img.width, img.height);
-
-  canvas_context.drawImage(img,dimmensions["startX"], dimmensions["startY"], dimmensions["width"], dimmensions["height"]);
+  canvas_context.drawImage(img, dimmensions['startX'], dimmensions['startY'], dimmensions['width'], dimmensions['height']);
 
   // - Clear the form when a new image is selected
   // - If you draw the image to canvas here, it will update as soon as a new image is selected
 });
 canvas_change.addEventListener('change', (event) => {
   img.src= URL.createObjectURL(event.target.files[0]);
-  img.alt = event.target.files[0].name;
-  //console.log("Image change");
-  //img.src = canvas_change;
-  //img.alt = canvas_change;
-} );
+  img.alt = event.target.files[0];
+});
+
 /**
  * Takes in the dimensions of the canvas and the new image, then calculates the new
  * dimensions of the image so that it fits perfectly into the Canvas and maintains aspect ratio
